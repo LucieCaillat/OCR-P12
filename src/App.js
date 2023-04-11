@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import SideNav from "./components/SideNav";
+import Dashboard from "./components/dashboard/Dashboard";
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import getUser from "./services/api";
 
-function App() {
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  *{box-sizing: border-box;}
+`;
+
+const AppDiv = styled.div`
+  width: 100vw;
+  display: flex;
+`;
+const Main = styled.div`
+  width: 100%;
+`;
+
+export default function App() {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    async function myUser() {
+      const user = await getUser(18);
+      setUser(user);
+    }
+    myUser();
+  }, [setUser]);
+  console.log(user);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppDiv>
+      <GlobalStyle />
+      <SideNav />
+      <Main>
+        <Header />
+        <Dashboard />
+      </Main>
+    </AppDiv>
   );
 }
-
-export default App;
