@@ -19,8 +19,12 @@ const List = styled.ul`
   display: flex;
   justify-content: space-between;
   color: white;
-  background: red;
   font-size: 24px;
+  padding: 0;
+  margin-right: 87px;
+`;
+const Li = styled.li`
+  list-style-type: none;
 `;
 
 export default function Header() {
@@ -28,9 +32,10 @@ export default function Header() {
     <HeaderDiv>
       <Logo src={logo} alt="portSee" />
       <List>
-        <li>Accueil</li>
-        <li>Profil</li>
-        <li>Réglage</li>
+        <Li>Accueil</Li>
+        <Li>Profil</Li>
+        <Li>Réglage</Li>
+        <Li>Communauté</Li>
       </List>
     </HeaderDiv>
   );
