@@ -11,6 +11,7 @@ const DashboardDiv = styled.div`
     padding-top: 6vh;
     margin-bottom: 4vh;
     font-size: 48px;
+    font-weight: 500;
     & span {
       color: ${colors.primary};
     }
