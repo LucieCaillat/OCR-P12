@@ -23,12 +23,17 @@ const StyledSidNav = styled.div`
   align-items: center;
   & .sport-box {
     margin-bottom: 16vh;
+    height: 33vh;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   & p {
     color: white;
     font-size: 12px;
     writing-mode: sideways-lr;
-    margin-bottom: 59px;
+    margin-bottom: 5.7vh;
   }
 `;
 export default function SideNav() {

@@ -5,12 +5,9 @@ const StyledSquareIcon = styled.div`
   height: ${({ size }) => size};
   background-color: ${({ color }) => color};
   border-radius: 6px;
-  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  & img {
-  }
 `;
 export default function SquareIcon({ color, size, icon }) {
   return (
