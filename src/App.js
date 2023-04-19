@@ -24,6 +24,8 @@ const AppDiv = styled.div`
 `;
 const Main = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function App() {
