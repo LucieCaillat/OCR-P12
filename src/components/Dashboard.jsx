@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import colors from "../../utils/style/colors";
-import DailyActivityGraph from "./DailyActivityGraph";
-import KeyFiguresCard from "./KeyFiguresCard";
+import colors from "../utils/style/colors";
+import DailyActivityGraph from "./onDashboard/DailyActivityGraph";
+import KeyFiguresCard from "./onDashboard/KeyFiguresCard";
+import AverageSessionsGraph from "./onDashboard/AverageSessionsGraph";
+import ActivitiesGraph from "./onDashboard/ActivitiesGraph";
+import ScoreGraph from "./onDashboard/ScoreGraph";
 
 const data = {
   id: 12,
@@ -93,9 +96,15 @@ export default function Dashboard() {
             <DailyActivityGraph />
           </DailyActivityGraphBox>
           <div className="bottom-part">
-            <SquarelBox color={colors.graph.backgroundred}></SquarelBox>
-            <SquarelBox color={colors.graph.darkGrey}></SquarelBox>
-            <SquarelBox color={colors.backgroundItems}></SquarelBox>
+            <SquarelBox color={colors.graph.backgroundred}>
+              <AverageSessionsGraph />
+            </SquarelBox>
+            <SquarelBox color={colors.graph.darkGrey}>
+              <ActivitiesGraph />
+            </SquarelBox>
+            <SquarelBox color={colors.backgroundItems}>
+              <ScoreGraph />
+            </SquarelBox>
           </div>
         </div>
         <div className="key-figures">

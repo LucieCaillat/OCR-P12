@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/Dashboard";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import getUser from "./services/api";
