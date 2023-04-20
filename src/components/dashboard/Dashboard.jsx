@@ -1,6 +1,23 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import DailyActivityGraph from "./DailyActivityGraph";
+import KeyFiguresCard from "./KeyFiguresCard";
+
+const data = {
+  id: 12,
+  userInfos: {
+    firstName: "Karl",
+    lastName: "Dovineau",
+    age: 31,
+  },
+  todayScore: 0.12,
+  keyData: {
+    calorieCount: 1930,
+    proteinCount: 155,
+    carbohydrateCount: 290,
+    lipidCount: 50,
+  },
+};
 
 const DashboardDiv = styled.div`
   height: 100%;
@@ -40,9 +57,11 @@ const FiguresBox = styled.div`
     }
   }
   & .key-figures {
-    background-color: purple;
     width: 23%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 
@@ -65,7 +84,7 @@ export default function Dashboard() {
   return (
     <DashboardDiv>
       <h1>
-        Bonjour <span>Thomas</span>
+        Bonjour <span>{data.userInfos.firstName}</span>
       </h1>
       <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏 </h2>
       <FiguresBox>
@@ -79,7 +98,15 @@ export default function Dashboard() {
             <SquarelBox color={colors.backgroundItems}></SquarelBox>
           </div>
         </div>
-        <div className="key-figures"></div>
+        <div className="key-figures">
+          <KeyFiguresCard type={"calorie"} data={data.keyData.calorieCount} />
+          <KeyFiguresCard type={"protein"} data={data.keyData.proteinCount} />
+          <KeyFiguresCard
+            type={"carbohydrate"}
+            data={data.keyData.carbohydrateCount}
+          />
+          <KeyFiguresCard type={"lipid"} data={data.keyData.lipidCount} />
+        </div>
       </FiguresBox>
     </DashboardDiv>
   );
