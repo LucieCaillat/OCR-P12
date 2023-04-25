@@ -42,7 +42,6 @@ export default function ActivitiesGraph() {
         <PolarAngleAxis dataKey="kind" />
 
         <Radar
-          name="Mike"
           dataKey="value"
           stroke={colors.primary}
           fill={colors.primary}

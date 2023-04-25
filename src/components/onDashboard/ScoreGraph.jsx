@@ -1,10 +1,8 @@
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import colors from "../../utils/style/colors";
+const p = 50;
 
-const data02 = [
-  { name: "Group A", value: 12 },
-  { name: "Group B", value: 88 },
-];
+const data02 = [{ value: p }, { value: 100 - p }];
 
 export default function ScoreGraph() {
   return (
@@ -15,11 +13,23 @@ export default function ScoreGraph() {
           data={data02}
           cx={"50%"}
           cy={"50%"}
-          innerRadius={70}
-          outerRadius={80}
-          fill={colors.graph.red}
+          innerRadius={"60%"}
+          outerRadius={"80%"}
+          startAngle={90}
+          endAngle={450}
+        >
+          <Cell key={`cell-1`} fill={colors.graph.red} />
+          <Cell key={`cell-2`} fill={colors.backgroundItems} />
+        </Pie>
+        <Pie
+          dataKey="value"
+          data={[{ value: 1 }]}
+          fill="white"
+          cx={"50%"}
+          cy={"50%"}
+          innerRadius={"0%"}
+          outerRadius={"60%"}
         />
-        <Tooltip />
       </PieChart>
     </ResponsiveContainer>
   );
