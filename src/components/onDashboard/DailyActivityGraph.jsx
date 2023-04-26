@@ -11,49 +11,9 @@ import {
 } from "recharts";
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
+import { useContext } from "react";
+import { DataContext } from "../../utils/context/Context";
 
-const data = [
-  {
-    day: "2020-07-01",
-    kilogram: 80,
-    calories: 240,
-  },
-  {
-    day: "2020-07-02",
-    kilogram: 80,
-    calories: 220,
-  },
-  {
-    day: "2020-07-03",
-    kilogram: 81,
-    calories: 280,
-  },
-  {
-    day: "2020-07-04",
-    kilogram: 81,
-    calories: 290,
-  },
-  {
-    day: "2020-07-05",
-    kilogram: 80,
-    calories: 160,
-  },
-  {
-    day: "2020-07-06",
-    kilogram: 78,
-    calories: 162,
-  },
-  {
-    day: "2020-07-07",
-    kilogram: 76,
-    calories: 390,
-  },
-];
-
-function formateDate(date) {
-  const objDate = new Date(date);
-  return objDate.getDate();
-}
 const StyledCustomTooltip = styled.div`
   background-color: ${colors.graph.red};
   color: ${colors.secondaryFontColor};
@@ -61,35 +21,45 @@ const StyledCustomTooltip = styled.div`
   font-size: 7px;
   padding: 7px;
 `;
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    const labelData = data.filter((day) => day.day === label)[0];
-    return (
-      <StyledCustomTooltip>
-        <p>{labelData.kilogram}kg</p>
-        <p>{labelData.calories}kcal</p>
-      </StyledCustomTooltip>
-    );
-  }
 
-  return null;
-};
 const StyledCustomLegendText = styled.span`
   color: ${colors.greyFontColor};
 `;
-const CustomLegendText = (value) => {
-  return (
-    <StyledCustomLegendText>
-      {value === "kilogram" ? "Poids (kg)" : "Calories brûlées (kCal)"}
-    </StyledCustomLegendText>
-  );
-};
 
 export default function DailyActivityGraph() {
+  const { sessions } = useContext(DataContext);
+
+  function formateDate(date) {
+    const objDate = new Date(date);
+    return objDate.getDate();
+  }
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const labelData = sessions.filter((day) => day.day === label)[0];
+      return (
+        <StyledCustomTooltip>
+          <p>{labelData.kilogram}kg</p>
+          <p>{labelData.calories}kcal</p>
+        </StyledCustomTooltip>
+      );
+    }
+
+    return null;
+  };
+
+  const CustomLegendText = (value) => {
+    return (
+      <StyledCustomLegendText>
+        {value === "kilogram" ? "Poids (kg)" : "Calories brûlées (kCal)"}
+      </StyledCustomLegendText>
+    );
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        data={data}
+        data={sessions}
         margin={{
           top: 20,
           right: 30,
