@@ -2,8 +2,7 @@ import Header from "./components/Header";
 import SideNav from "./components/SideNav";
 import Dashboard from "./components/Dashboard";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import getUser from "./services/api";
+import { DataProvider } from "./utils/context/Context";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -29,23 +28,15 @@ const Main = styled.div`
 `;
 
 export default function App() {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    async function myUser() {
-      const user = await getUser(18);
-      setUser(user);
-    }
-    myUser();
-  }, [setUser]);
-  console.log(user);
   return (
     <AppDiv>
       <GlobalStyle />
       <SideNav />
       <Main>
         <Header />
-        <Dashboard />
+        <DataProvider>
+          <Dashboard />
+        </DataProvider>
       </Main>
     </AppDiv>
   );

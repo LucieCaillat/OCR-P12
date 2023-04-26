@@ -5,22 +5,8 @@ import KeyFiguresCard from "./onDashboard/KeyFiguresCard";
 import AverageSessionsGraph from "./onDashboard/AverageSessionsGraph";
 import ActivitiesGraph from "./onDashboard/ActivitiesGraph";
 import ScoreGraph from "./onDashboard/ScoreGraph";
-
-const data = {
-  id: 12,
-  userInfos: {
-    firstName: "Karl",
-    lastName: "Dovineau",
-    age: 31,
-  },
-  todayScore: 0.12,
-  keyData: {
-    calorieCount: 1930,
-    proteinCount: 155,
-    carbohydrateCount: 290,
-    lipidCount: 50,
-  },
-};
+import { useContext } from "react";
+import { DataContext } from "../utils/context/Context";
 
 const DashboardDiv = styled.div`
   height: 100%;
@@ -84,10 +70,11 @@ const SquarelBox = styled.div`
 `;
 
 export default function Dashboard() {
+  const { user } = useContext(DataContext);
   return (
     <DashboardDiv>
       <h1>
-        Bonjour <span>{data.userInfos.firstName}</span>
+        Bonjour <span>{user.userInfos.firstName}</span>
       </h1>
       <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏 </h2>
       <FiguresBox>
@@ -108,13 +95,13 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="key-figures">
-          <KeyFiguresCard type={"calorie"} data={data.keyData.calorieCount} />
-          <KeyFiguresCard type={"protein"} data={data.keyData.proteinCount} />
+          <KeyFiguresCard type={"calorie"} data={user.keyData.calorieCount} />
+          <KeyFiguresCard type={"protein"} data={user.keyData.proteinCount} />
           <KeyFiguresCard
             type={"carbohydrate"}
-            data={data.keyData.carbohydrateCount}
+            data={user.keyData.carbohydrateCount}
           />
-          <KeyFiguresCard type={"lipid"} data={data.keyData.lipidCount} />
+          <KeyFiguresCard type={"lipid"} data={user.keyData.lipidCount} />
         </div>
       </FiguresBox>
     </DashboardDiv>
