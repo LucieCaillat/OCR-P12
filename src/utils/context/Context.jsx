@@ -21,6 +21,8 @@ export function DataProvider({ children }) {
   const userID = window.location.pathname.replace(/\/user\//, "");
   const [user, setUser] = useState(userNull);
   const [sessions, setSessions] = useState([]);
+  const [averageSessions, setAverageSessions] = useState([]);
+  const [performance, setPerformance] = useState([]);
 
   useEffect(() => {
     async function myUser() {
@@ -38,8 +40,26 @@ export function DataProvider({ children }) {
     mySessions();
   }, [userID]);
 
+  useEffect(() => {
+    async function myAverageSessions() {
+      const averageSessions = await getData(userID, "average-sessions");
+      setAverageSessions(averageSessions.sessions);
+    }
+    myAverageSessions();
+  }, [userID]);
+
+  useEffect(() => {
+    async function myPerformance() {
+      const performance = await getData(userID, "performance");
+      setPerformance(performance.data);
+    }
+    myPerformance();
+  }, [userID]);
+
   return (
-    <DataContext.Provider value={{ user, sessions }}>
+    <DataContext.Provider
+      value={{ user, sessions, averageSessions, performance }}
+    >
       {children}
     </DataContext.Provider>
   );

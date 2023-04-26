@@ -8,51 +8,8 @@ import {
 } from "recharts";
 import colors from "../../utils/style/colors";
 import styled from "styled-components";
-
-const data = [
-  {
-    day: 1,
-    sessionLength: 30,
-  },
-  {
-    day: 2,
-    sessionLength: 23,
-  },
-  {
-    day: 3,
-    sessionLength: 45,
-  },
-  {
-    day: 4,
-    sessionLength: 50,
-  },
-  {
-    day: 5,
-    sessionLength: 0,
-  },
-  {
-    day: 6,
-    sessionLength: 0,
-  },
-  {
-    day: 7,
-    sessionLength: 60,
-  },
-];
-
-const averageSessionLength =
-  data.map((obj) => obj.sessionLength).reduce((a, b) => a + b) / data.length;
-const augmentedData = [
-  {
-    day: 0,
-    sessionLength: averageSessionLength,
-  },
-  ...data,
-  {
-    day: 8,
-    sessionLength: averageSessionLength,
-  },
-];
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../../utils/context/Context";
 
 const dayOfWeek = {
   0: "",
@@ -73,23 +30,48 @@ const StyledCustomTooltip = styled.div`
   font-size: 8px;
   padding: 1px 7px;
 `;
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    const labelData = augmentedData.filter((day) => day.day === label)[0];
-    const isOnBoardData = label === 0 || label === 8;
-    return isOnBoardData ? (
-      ""
-    ) : (
-      <StyledCustomTooltip>
-        <p> {labelData.sessionLength} min</p>
-      </StyledCustomTooltip>
-    );
-  }
-
-  return null;
-};
 
 export default function AverageSessionsGraph() {
+  const { averageSessions } = useContext(DataContext);
+  const [augmentedData, setAugmentedData] = useState([]);
+
+  useEffect(() => {
+    if (averageSessions.length !== 0) {
+      const averageSessionLength =
+        averageSessions
+          .map((obj) => obj.sessionLength)
+          .reduce((a, b) => a + b) / averageSessions.length;
+
+      setAugmentedData([
+        {
+          day: 0,
+          sessionLength: averageSessionLength,
+        },
+        ...averageSessions,
+        {
+          day: 8,
+          sessionLength: averageSessionLength,
+        },
+      ]);
+    }
+  }, [averageSessions]);
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const labelData = augmentedData.filter((day) => day.day === label)[0];
+      const isOnBoardData = label === 0 || label === 8;
+      return isOnBoardData ? (
+        ""
+      ) : (
+        <StyledCustomTooltip>
+          <p> {labelData.sessionLength} min</p>
+        </StyledCustomTooltip>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
@@ -102,7 +84,6 @@ export default function AverageSessionsGraph() {
           left: -7,
         }}
       >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <XAxis
           dataKey="day"
           tickLine={false}

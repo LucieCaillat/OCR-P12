@@ -1,16 +1,17 @@
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import colors from "../../utils/style/colors";
-const p = 50;
-
-const data02 = [{ value: p }, { value: 100 - p }];
+import { useContext } from "react";
+import { DataContext } from "../../utils/context/Context";
 
 export default function ScoreGraph() {
+  const { user } = useContext(DataContext);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width={400} height={400}>
         <Pie
           dataKey="value"
-          data={data02}
+          data={[{ value: user.score }, { value: 1 - user.score }]}
           cx={"50%"}
           cy={"50%"}
           innerRadius={"60%"}
@@ -29,6 +30,8 @@ export default function ScoreGraph() {
           cy={"50%"}
           innerRadius={"0%"}
           outerRadius={"60%"}
+          startAngle={90}
+          endAngle={450}
         />
       </PieChart>
     </ResponsiveContainer>
