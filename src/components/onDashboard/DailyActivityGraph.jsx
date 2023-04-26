@@ -63,11 +63,11 @@ const StyledCustomTooltip = styled.div`
 `;
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
-    const activData = data.filter((day) => day.day === label)[0];
+    const labelData = data.filter((day) => day.day === label)[0];
     return (
       <StyledCustomTooltip>
-        <p>{activData.kilogram}kg</p>
-        <p>{activData.calories}kcal</p>
+        <p>{labelData.kilogram}kg</p>
+        <p>{labelData.calories}kcal</p>
       </StyledCustomTooltip>
     );
   }

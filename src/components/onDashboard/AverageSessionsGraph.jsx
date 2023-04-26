@@ -75,10 +75,13 @@ const StyledCustomTooltip = styled.div`
 `;
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
-    const activData = data.filter((day) => day.day === label)[0];
-    return (
+    const labelData = augmentedData.filter((day) => day.day === label)[0];
+    const isOnBoardData = label === 0 || label === 8;
+    return isOnBoardData ? (
+      ""
+    ) : (
       <StyledCustomTooltip>
-        <p>{activData.sessionLength} min</p>
+        <p> {labelData.sessionLength} min</p>
       </StyledCustomTooltip>
     );
   }
