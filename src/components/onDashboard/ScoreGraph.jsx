@@ -5,13 +5,14 @@ import { DataContext } from "../../utils/context/Context";
 
 export default function ScoreGraph() {
   const { user } = useContext(DataContext);
+  const score = user.score === undefined ? user.todayScore : user.score;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width={400} height={400}>
         <Pie
           dataKey="value"
-          data={[{ value: user.score }, { value: 1 - user.score }]}
+          data={[{ value: score }, { value: 1 - score }]}
           cx={"50%"}
           cy={"50%"}
           innerRadius={"60%"}

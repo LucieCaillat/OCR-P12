@@ -75,19 +75,44 @@ const SquarelBox = styled.div`
   height: 25.6vh;
   border-radius: 5px;
   background-color: ${({ color }) => color};
+  & h3 {
+    font-weight: 500;
+    font-size: 15px;
+    margin: 0;
+  }
   & .average-session-title {
     width: 147px;
-    margin: 0;
     margin-top: 2.8vh;
     margin-left: 13%;
     color: rgba(255, 255, 255, 0.4);
-    font-weight: 500;
-    font-size: 15px;
+  }
+  & .score-graph-title {
+    height: 0;
+    position: relative;
+    top: 24px;
+    left: 30px;
+    color: ${colors.graph.darkTitle};
+  }
+  & .score {
+    font-size: 16px;
+    width: 70px;
+    height: 0;
+    color: ${colors.graph.lightGrey};
+    text-align: center;
+    position: relative;
+    bottom: 70%;
+    left: 36%;
+    & span {
+      font-size: 26px;
+      color: ${colors.graph.darkTitle};
+    }
   }
 `;
 
 export default function Dashboard() {
   const { user } = useContext(DataContext);
+  const score = user.score === undefined ? user.todayScore : user.score;
+
   return (
     <DashboardDiv>
       <h1>
@@ -111,7 +136,11 @@ export default function Dashboard() {
               <ActivitiesGraph />
             </SquarelBox>
             <SquarelBox color={colors.backgroundItems}>
+              <h3 className="score-graph-title"> Score </h3>
               <ScoreGraph />
+              <p className="score">
+                <span>{score * 100}%</span> de votre objectif
+              </p>
             </SquarelBox>
           </div>
         </div>
