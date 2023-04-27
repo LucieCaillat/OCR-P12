@@ -72,7 +72,7 @@ export default function DailyActivityGraph() {
           top: 10,
           right: 29,
           left: 32,
-          bottom: 40,
+          bottom: 60,
         }}
       >
         <CartesianGrid strokeDasharray="2 2" vertical={false} />

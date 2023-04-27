@@ -75,6 +75,15 @@ const SquarelBox = styled.div`
   height: 25.6vh;
   border-radius: 5px;
   background-color: ${({ color }) => color};
+  & .average-session-title {
+    width: 147px;
+    margin: 0;
+    margin-top: 2.8vh;
+    margin-left: 13%;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    font-size: 15px;
+  }
 `;
 
 export default function Dashboard() {
@@ -93,6 +102,9 @@ export default function Dashboard() {
           </DailyActivityGraphBox>
           <div className="bottom-part">
             <SquarelBox color={colors.graph.backgroundred}>
+              <h3 className="average-session-title">
+                Durée moyenne des sessions
+              </h3>
               <AverageSessionsGraph />
             </SquarelBox>
             <SquarelBox color={colors.graph.darkGrey}>

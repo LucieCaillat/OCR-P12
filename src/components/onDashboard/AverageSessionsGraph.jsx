@@ -73,7 +73,7 @@ export default function AverageSessionsGraph() {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="75%">
       <LineChart
         width={500}
         height={300}
@@ -91,7 +91,7 @@ export default function AverageSessionsGraph() {
           tickFormatter={(number) => dayOfWeek[number]}
           tickMargin={30}
         />
-        <YAxis hide={true} domain={[0, "dataMax +20"]} />
+        <YAxis hide={true} domain={["dataMin -10", "dataMax +20"]} />
         <Tooltip content={<CustomTooltip />} />
         <Line
           type="natural"
