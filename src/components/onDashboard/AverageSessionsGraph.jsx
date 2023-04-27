@@ -94,7 +94,7 @@ export default function AverageSessionsGraph() {
         <YAxis hide={true} domain={["dataMin -10", "dataMax +20"]} />
         <Tooltip content={<CustomTooltip />} />
         <Line
-          type="natural"
+          type="monotone"
           dataKey="sessionLength"
           stroke={colors.secondaryFontColor}
           activeDot={{
