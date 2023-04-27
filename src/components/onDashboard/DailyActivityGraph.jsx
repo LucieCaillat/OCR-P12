@@ -24,6 +24,10 @@ const StyledCustomTooltip = styled.div`
 
 const StyledCustomLegendText = styled.span`
   color: ${colors.greyFontColor};
+  padding-left: 12px;
+  & span {
+    padding-right: 32px;
+  }
 `;
 
 export default function DailyActivityGraph() {
@@ -51,7 +55,11 @@ export default function DailyActivityGraph() {
   const CustomLegendText = (value) => {
     return (
       <StyledCustomLegendText>
-        {value === "kilogram" ? "Poids (kg)" : "Calories brûlées (kCal)"}
+        {value === "kilogram" ? (
+          <span>Poids (kg)</span>
+        ) : (
+          "Calories brûlées (kCal)"
+        )}
       </StyledCustomLegendText>
     );
   };
@@ -61,10 +69,10 @@ export default function DailyActivityGraph() {
       <BarChart
         data={sessions}
         margin={{
-          top: 20,
-          right: 30,
+          top: 10,
+          right: 29,
           left: 32,
-          bottom: 25,
+          bottom: 40,
         }}
       >
         <CartesianGrid strokeDasharray="2 2" vertical={false} />

@@ -60,6 +60,14 @@ const DailyActivityGraphBox = styled.div`
   font-size: 14px;
   background-color: ${colors.backgroundItems};
   border-radius: 5px;
+  & h3 {
+    font-weight: 500;
+    font-size: 15px;
+    height: 0;
+    position: relative;
+    top: 24px;
+    left: 32px;
+  }
 `;
 
 const SquarelBox = styled.div`
@@ -80,6 +88,7 @@ export default function Dashboard() {
       <FiguresBox>
         <div className="graph-box">
           <DailyActivityGraphBox>
+            <h3>Activité quotidienne</h3>
             <DailyActivityGraph />
           </DailyActivityGraphBox>
           <div className="bottom-part">
