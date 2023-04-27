@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import getData from "../../services/api";
+import { useParams } from "react-router-dom";
 
 const userNull = {
   userInfos: {
@@ -18,7 +19,7 @@ const userNull = {
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const userID = window.location.pathname.replace(/\/user\//, "");
+  const userID = useParams().id;
   const [user, setUser] = useState(userNull);
   const [sessions, setSessions] = useState([]);
   const [averageSessions, setAverageSessions] = useState([]);
