@@ -21,7 +21,11 @@ export default function ScoreGraph() {
           endAngle={450}
         >
           <Cell key={`cell-1`} fill={colors.graph.red} />
-          <Cell key={`cell-2`} fill={colors.backgroundItems} />
+          <Cell
+            key={`cell-2`}
+            fill={colors.backgroundItems}
+            stroke={colors.backgroundItems}
+          />
         </Pie>
         <Pie
           dataKey="value"
