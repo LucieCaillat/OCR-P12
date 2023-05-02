@@ -23,12 +23,20 @@ the front-end developer: Lucie
 
 ## Project
 
+Project contains just one Route to the root of the project (scr/index.js).
+The getData function is used for all API calls (scr/utils/services/api.js).
+All API calls are centralized in the Context component (scr/utils/context/Context.jsx).
+Here are the Recharts components used in the project :
+
+- BarChart
+- LineChart
+- RadarChart
+- PieChart
+
 ### Prerequisites
 
-- [NodeJS (**version 12.18**)](https://nodejs.org/en/)
+- [NodeJS ](https://nodejs.org/en/)
 - Install and run the back-end API. (https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
-
-If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
 You will find all the instructions to install and run the micro API in the Readme of its repo
 
@@ -42,6 +50,6 @@ You will find all the instructions to install and run the micro API in the Readm
 ### Endpoints
 
 To display the dashboard of a user you need this url
-http://localhost:3000/user/${userId}
+http://localhost:3001/user/${userId}
 
 **Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
