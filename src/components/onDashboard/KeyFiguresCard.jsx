@@ -5,6 +5,7 @@ import logoCalorie from "../../assets/logo-calorie.svg";
 import logoProt from "../../assets/logo-prot.svg";
 import logoGlu from "../../assets/logo-glu.svg";
 import logoLip from "../../assets/logo-lip.svg";
+import PropTypes from "prop-types";
 
 const typeFigure = {
   calorie: {
@@ -68,3 +69,8 @@ export default function KeyFiguresCard({ type, data }) {
     </StyledKeyFiguresCard>
   );
 }
+
+KeyFiguresCard.propTypes = {
+  type: PropTypes.string,
+  data: PropTypes.number,
+};

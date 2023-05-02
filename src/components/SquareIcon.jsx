@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledSquareIcon = styled.div`
   width: ${({ size }) => size};
@@ -16,3 +17,9 @@ export default function SquareIcon({ color, size, icon }) {
     </StyledSquareIcon>
   );
 }
+
+SquareIcon.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.string,
+  icon: PropTypes.object,
+};

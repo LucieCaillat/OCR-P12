@@ -7,6 +7,7 @@ import ActivitiesGraph from "./onDashboard/ActivitiesGraph";
 import ScoreGraph from "./onDashboard/ScoreGraph";
 import { useContext } from "react";
 import { DataContext } from "../utils/context/Context";
+import PropTypes from "prop-types";
 
 const DashboardDiv = styled.div`
   height: 100%;
@@ -145,15 +146,28 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="key-figures">
-          <KeyFiguresCard type={"calorie"} data={user.keyData.calorieCount} />
-          <KeyFiguresCard type={"protein"} data={user.keyData.proteinCount} />
+          <KeyFiguresCard
+            type={"calorie"}
+            data={Number(user.keyData.calorieCount)}
+          />
+          <KeyFiguresCard
+            type={"protein"}
+            data={Number(user.keyData.proteinCount)}
+          />
           <KeyFiguresCard
             type={"carbohydrate"}
-            data={user.keyData.carbohydrateCount}
+            data={Number(user.keyData.carbohydrateCount)}
           />
-          <KeyFiguresCard type={"lipid"} data={user.keyData.lipidCount} />
+          <KeyFiguresCard
+            type={"lipid"}
+            data={Number(user.keyData.lipidCount)}
+          />
         </div>
       </FiguresBox>
     </DashboardDiv>
   );
 }
+
+SquarelBox.propTypes = {
+  color: PropTypes.string,
+};
