@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import getData from "../../services/api";
+import getData from "../services/api";
 import { useParams } from "react-router-dom";
+
+/** All API calls are centralized in the Context, the component DataProvide is used in App*/
 
 const userNull = {
   userInfos: {
