@@ -20,9 +20,11 @@ const typeOfData = {
 
 export default function ActivitiesGraph() {
   const { performance } = useContext(DataContext);
+  const data = [...performance].reverse();
+
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={performance}>
+      <RadarChart cx="50%" cy="50%" outerRadius="60%" data={data}>
         <PolarGrid />
         <PolarAngleAxis
           dataKey="kind"

@@ -76,6 +76,7 @@ const SquarelBox = styled.div`
   height: 25.6vh;
   border-radius: 5px;
   background-color: ${({ color }) => color};
+  font-size: 12px;
   & h3 {
     font-weight: 500;
     font-size: 15px;
@@ -101,8 +102,8 @@ const SquarelBox = styled.div`
     color: ${colors.graph.lightGrey};
     text-align: center;
     position: relative;
-    bottom: 70%;
-    left: 36%;
+    bottom: 72%;
+    left: 40%;
     & span {
       font-size: 26px;
       color: ${colors.graph.darkTitle};
