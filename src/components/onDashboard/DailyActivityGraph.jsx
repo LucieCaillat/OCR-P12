@@ -7,7 +7,6 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Text,
 } from "recharts";
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
@@ -110,7 +109,6 @@ export default function DailyActivityGraph() {
           height={80}
           formatter={CustomLegendText}
         />
-        <Text>Coucou</Text>
         <Bar
           yAxisId="right"
           dataKey="kilogram"
