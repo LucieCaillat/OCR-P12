@@ -48,6 +48,7 @@ const FiguresBox = styled.div`
   }
   & .key-figures {
     width: 23%;
+    max-width: 450px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -72,6 +73,7 @@ const DailyActivityGraphBox = styled.div`
 `;
 
 const SquarelBox = styled.div`
+  position: relative;
   width: 31%;
   height: 25.6vh;
   border-radius: 5px;
@@ -95,18 +97,24 @@ const SquarelBox = styled.div`
     left: 30px;
     color: ${colors.graph.darkTitle};
   }
-  & .score {
-    font-size: 16px;
-    width: 70px;
-    height: 0;
-    color: ${colors.graph.lightGrey};
-    text-align: center;
-    position: relative;
-    bottom: 72%;
-    left: 40%;
-    & span {
-      font-size: 26px;
-      color: ${colors.graph.darkTitle};
+  & .score-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .score {
+      font-size: 16px;
+      width: 70px;
+      color: ${colors.graph.lightGrey};
+      text-align: center;
+      & span {
+        font-size: 26px;
+        color: ${colors.graph.darkTitle};
+      }
     }
   }
 `;
@@ -138,11 +146,13 @@ export default function Dashboard() {
               <ActivitiesGraph />
             </SquarelBox>
             <SquarelBox color={colors.backgroundItems}>
+              <div className="score-box">
+                <p className="score">
+                  <span>{score * 100}%</span> de votre objectif
+                </p>
+              </div>
               <h3 className="score-graph-title"> Score </h3>
               <ScoreGraph />
-              <p className="score">
-                <span>{score * 100}%</span> de votre objectif
-              </p>
             </SquarelBox>
           </div>
         </div>
