@@ -12,6 +12,7 @@ const colors = {
     lightGrey: "#C4C4C4",
     red: "#E60000",
     backgroundred: "#FF0000",
+    legend: "#9B9EAC",
   },
 };
 

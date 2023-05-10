@@ -90,6 +90,7 @@ export default function AverageSessionsGraph() {
           axisLine={false}
           tickFormatter={(number) => dayOfWeek[number]}
           tickMargin={30}
+          stroke={colors.secondaryFontColor}
         />
         <YAxis hide={true} domain={["dataMin -10", "dataMax +20"]} />
         <Tooltip content={<CustomTooltip />} />

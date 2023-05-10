@@ -82,6 +82,7 @@ export default function DailyActivityGraph() {
           axisLine={false}
           tickFormatter={(date) => formateDate(date)}
           tickMargin={16}
+          stroke={colors.graph.legend}
         />
         <YAxis
           dataKey="kilogram"
@@ -92,6 +93,7 @@ export default function DailyActivityGraph() {
           tickCount={3}
           domain={["dataMin - 1", "dataMax "]}
           tickMargin={20}
+          stroke={colors.graph.legend}
         />
         <YAxis
           dataKey="calories"

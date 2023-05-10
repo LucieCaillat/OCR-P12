@@ -29,6 +29,8 @@ export default function ActivitiesGraph() {
         <PolarAngleAxis
           dataKey="kind"
           tickFormatter={(number) => typeOfData[number]}
+          stroke={colors.secondaryFontColor}
+          tickLine={false}
         />
 
         <Radar
